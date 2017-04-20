@@ -6,14 +6,14 @@ package com.example.rafael.linschat.domain;
  * Todos os direitos reservados.
  */
 
-public class Menssagem {
+public class Mensagem {
     private String nomeUsuario;
     private String message;
 
-    public Menssagem() {
+    public Mensagem() {
     }
 
-    public Menssagem(String nomeUsuario, String message) {
+    public Mensagem(String nomeUsuario, String message) {
         this.nomeUsuario = nomeUsuario;
         this.message = message;
     }

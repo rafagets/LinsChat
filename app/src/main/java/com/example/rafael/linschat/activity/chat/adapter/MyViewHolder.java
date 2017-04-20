@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.rafael.linschat.R;
-import com.example.rafael.linschat.domain.Menssagem;
+import com.example.rafael.linschat.domain.Mensagem;
 
 /**
  * Jovem Soluções M.E.
@@ -19,12 +19,12 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
     }
 
-    public void setDados(Menssagem menssagem) {
+    public void setDados(Mensagem mensagem) {
         TextView menssage, nome;
-        menssage = (TextView) itemView.findViewById(R.id.menssagem);
+        menssage = (TextView) itemView.findViewById(R.id.mensagem);
         nome = (TextView) itemView.findViewById(R.id.nome);
 
-        menssage.setText(menssagem.getMessage());
-        nome.setText(menssagem.getNomeUsuario());
+        menssage.setText(mensagem.getMessage());
+        nome.setText(mensagem.getNomeUsuario());
     }
 }

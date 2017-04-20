@@ -1,6 +1,6 @@
 package com.example.rafael.linschat.DAO;
 
-import com.example.rafael.linschat.domain.Menssagem;
+import com.example.rafael.linschat.domain.Mensagem;
 import com.example.rafael.linschat.domain.Usuario;
 import com.example.rafael.linschat.util.CallFirebase;
 import com.example.rafael.linschat.util.LibraryClass;
@@ -26,11 +26,11 @@ public interface Controle {
         void cadastrar(Usuario usuario, CallFirebase call);
     }
 
-    interface MenssagemCtrl{
+    interface MensagemCtrl {
         DatabaseReference RAIZ = LibraryClass.getRaiz().child("chat");
 
-        void post(Menssagem menssagem, CallFirebase call);
-        void retrieveList(ArrayList<Menssagem> menssagems, CallFirebase call);
+        void post(Mensagem mensagem, CallFirebase call);
+        void retrieveList(ArrayList<Mensagem> mensagems, CallFirebase call);
 
         void imOnline(HashMap<String, Object> user);
         void imOffline(String uId);

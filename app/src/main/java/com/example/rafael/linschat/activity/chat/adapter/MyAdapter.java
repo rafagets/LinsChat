@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.rafael.linschat.R;
-import com.example.rafael.linschat.domain.Menssagem;
+import com.example.rafael.linschat.domain.Mensagem;
 
 import java.util.ArrayList;
 
@@ -17,10 +17,10 @@ import java.util.ArrayList;
  */
 
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
-    private ArrayList<Menssagem> menssagems;
+    private ArrayList<Mensagem> mensagems;
 
-    public MyAdapter(ArrayList<Menssagem> menssagems) {
-        this.menssagems = menssagems;
+    public MyAdapter(ArrayList<Mensagem> mensagems) {
+        this.mensagems = mensagems;
     }
 
     @Override
@@ -33,11 +33,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.setDados(menssagems.get(position));
+        holder.setDados(mensagems.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return menssagems.size();
+        return mensagems.size();
     }
 }

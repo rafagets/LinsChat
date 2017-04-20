@@ -1,6 +1,6 @@
 package com.example.rafael.linschat.activity.chat;
 
-import com.example.rafael.linschat.domain.Menssagem;
+import com.example.rafael.linschat.domain.Mensagem;
 import com.example.rafael.linschat.util.LibraryClass;
 
 import java.util.ArrayList;
@@ -14,21 +14,21 @@ import java.util.ArrayList;
 public class Presenter implements MVPChat.Presenter {
     private MVPChat.Model model;
     private MVPChat.View view;
-    private ArrayList<Menssagem> menssagems;
+    private ArrayList<Mensagem> mensagems;
 
     public Presenter() {
         this.model = new Model(this);
-        this.menssagems = new ArrayList<>();
+        this.mensagems = new ArrayList<>();
     }
 
     @Override
-    public ArrayList<Menssagem> getMenssagens() {
-        return menssagems;
+    public ArrayList<Mensagem> getMenssagens() {
+        return mensagems;
     }
 
     @Override
     public void postMenssagem(String menssagem) {
-        model.postMenssagem(new Menssagem(LibraryClass.getAuth().getCurrentUser().getEmail(), menssagem));
+        model.postMenssagem(new Mensagem(LibraryClass.getAuth().getCurrentUser().getEmail(), menssagem));
     }
 
     @Override
@@ -38,7 +38,7 @@ public class Presenter implements MVPChat.Presenter {
 
     @Override
     public void retrieveMenssagens() {
-        model.retrieveMenssagens(menssagems);
+        model.retrieveMenssagens(mensagems);
     }
 
     @Override

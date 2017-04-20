@@ -1,9 +1,8 @@
 package com.example.rafael.linschat.activity.chat;
 
-import com.example.rafael.linschat.domain.Menssagem;
+import com.example.rafael.linschat.domain.Mensagem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Jovem Soluções M.E.
@@ -13,15 +12,15 @@ import java.util.HashMap;
 
 public interface MVPChat {
     interface Model {
-        void postMenssagem(Menssagem menssagem);
-        void retrieveMenssagens(ArrayList<Menssagem> menssagems);
+        void postMenssagem(Mensagem mensagem);
+        void retrieveMenssagens(ArrayList<Mensagem> mensagems);
 
         void imOnline(Boolean status);
         void retrieveUsersOnline();
     }
 
     interface Presenter {
-        ArrayList<Menssagem> getMenssagens();
+        ArrayList<Mensagem> getMenssagens();
         void postMenssagem(String menssagem);
         void retrieveMenssagens();
         void refreshMenssagens();

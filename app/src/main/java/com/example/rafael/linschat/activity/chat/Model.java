@@ -1,8 +1,8 @@
 package com.example.rafael.linschat.activity.chat;
 
-import com.example.rafael.linschat.domain.Menssagem;
+import com.example.rafael.linschat.domain.Mensagem;
 import com.example.rafael.linschat.DAO.Controle;
-import com.example.rafael.linschat.DAO.MenssagemDAO;
+import com.example.rafael.linschat.DAO.MensagemDAO;
 import com.example.rafael.linschat.util.CallFirebase;
 import com.example.rafael.linschat.util.LibraryClass;
 
@@ -17,16 +17,16 @@ import java.util.HashMap;
 
 public class Model implements MVPChat.Model {
     private MVPChat.Presenter presenter;
-    private Controle.MenssagemCtrl menssagemCtrl;
+    private Controle.MensagemCtrl mensagemCtrl;
 
     public Model(MVPChat.Presenter presenter) {
         this.presenter = presenter;
-        this.menssagemCtrl = new MenssagemDAO();
+        this.mensagemCtrl = new MensagemDAO();
     }
 
     @Override
-    public void postMenssagem(Menssagem menssagem) {
-        menssagemCtrl.post(menssagem, new CallFirebase() {
+    public void postMenssagem(Mensagem mensagem) {
+        mensagemCtrl.post(mensagem, new CallFirebase() {
             @Override
             public void result(boolean b) {
                 if (b)
@@ -38,9 +38,9 @@ public class Model implements MVPChat.Model {
     }
 
     @Override
-    public void retrieveMenssagens(ArrayList<Menssagem> menssagems) {
+    public void retrieveMenssagens(ArrayList<Mensagem> mensagems) {
         presenter.setDialog("Buscando chat...");
-        menssagemCtrl.retrieveList(menssagems, new CallFirebase() {
+        mensagemCtrl.retrieveList(mensagems, new CallFirebase() {
             @Override
             public void result(boolean b) {
                 presenter.closeDialog();
@@ -57,16 +57,16 @@ public class Model implements MVPChat.Model {
             String nome = LibraryClass.getAuth().getCurrentUser().getDisplayName();
             String uId = LibraryClass.getAuth().getCurrentUser().getUid();
             user.put(uId, nome);
-            menssagemCtrl.imOnline(user);
+            mensagemCtrl.imOnline(user);
         }else{
-            menssagemCtrl.imOffline(LibraryClass.getAuth().getCurrentUser().getUid());
+            mensagemCtrl.imOffline(LibraryClass.getAuth().getCurrentUser().getUid());
         }
     }
 
     @Override
     public void retrieveUsersOnline(){
         final HashMap<String, String> users = new HashMap<>();
-        menssagemCtrl.retrieveUsersOnline(users, new CallFirebase() {
+        mensagemCtrl.retrieveUsersOnline(users, new CallFirebase() {
             @Override
             public void result(boolean b) {
                 if (b)

@@ -1,6 +1,6 @@
 package com.example.rafael.linschat.DAO;
 
-import com.example.rafael.linschat.domain.Menssagem;
+import com.example.rafael.linschat.domain.Mensagem;
 import com.example.rafael.linschat.util.CallFirebase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,15 +17,15 @@ import java.util.Map;
  * Todos os direitos reservados.
  */
 
-public class MenssagemDAO implements Controle.MenssagemCtrl {
+public class MensagemDAO implements Controle.MensagemCtrl {
 
     @Override
-    public void post(Menssagem menssagem, final CallFirebase call) {
+    public void post(Mensagem mensagem, final CallFirebase call) {
         String codigo = RAIZ.push().getKey();
         RAIZ
-            .child("menssagens")
+            .child("posts")
             .child(codigo)
-            .setValue(menssagem, new DatabaseReference.CompletionListener() {
+            .setValue(mensagem, new DatabaseReference.CompletionListener() {
                 @Override
                 public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                     call.result(true);
@@ -34,13 +34,13 @@ public class MenssagemDAO implements Controle.MenssagemCtrl {
     }
 
     @Override
-    public void retrieveList(final ArrayList<Menssagem> menssagems, final CallFirebase call) {
-        RAIZ.child("menssagens").addValueEventListener(new ValueEventListener() {
+    public void retrieveList(final ArrayList<Mensagem> mensagems, final CallFirebase call) {
+        RAIZ.child("posts").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                menssagems.clear();
+                mensagems.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren())
-                    menssagems.add(snapshot.getValue(Menssagem.class));
+                    mensagems.add(snapshot.getValue(Mensagem.class));
                 call.result(true);
             }
 
