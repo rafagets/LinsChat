@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.rafael.linschat.R;
@@ -28,6 +29,7 @@ public class ChatActivity extends AppCompatActivity implements MVPChat.View {
             presenter = new Presenter();
         presenter.setView(this);
         presenter.retrieveMenssagens();
+        presenter.retrieveUsersOnline();
 
         initViews();
     }
@@ -41,7 +43,6 @@ public class ChatActivity extends AppCompatActivity implements MVPChat.View {
         recyclerView.setAdapter(myAdapter);
 
         msg = (EditText) findViewById(R.id.message);
-
     }
 
     public void sendMessage(View view) {
@@ -60,6 +61,12 @@ public class ChatActivity extends AppCompatActivity implements MVPChat.View {
     }
 
     @Override
+    public void refreshUsersOnline(String usersOnline) {
+        TextView mUsersOnline = (TextView) findViewById(R.id.usersOnline);
+        mUsersOnline.setText(usersOnline);
+    }
+
+    @Override
     public void setDialog(String message) {
         dialog = new ProgressDialog(this);
         dialog.setMessage(message);
@@ -75,5 +82,11 @@ public class ChatActivity extends AppCompatActivity implements MVPChat.View {
     @Override
     public void showMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        presenter.imOnline(hasFocus);
     }
 }

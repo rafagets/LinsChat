@@ -22,11 +22,6 @@ public class Presenter implements MVPChat.Presenter {
     }
 
     @Override
-    public void retrieveMenssagens() {
-        model.retrieveMenssagens(menssagems);
-    }
-
-    @Override
     public ArrayList<Menssagem> getMenssagens() {
         return menssagems;
     }
@@ -37,13 +32,38 @@ public class Presenter implements MVPChat.Presenter {
     }
 
     @Override
-    public void setView(MVPChat.View view) {
-        this.view = view;
+    public void clearCampo() {
+        view.clearCampo();
+    }
+
+    @Override
+    public void retrieveMenssagens() {
+        model.retrieveMenssagens(menssagems);
     }
 
     @Override
     public void refreshMenssagens() {
         view.refreshMenssagens();
+    }
+
+    @Override
+    public void imOnline(Boolean status){
+        model.imOnline(status);
+    }
+
+    @Override
+    public void retrieveUsersOnline() {
+        model.retrieveUsersOnline();
+    }
+
+    @Override
+    public void refreshUsersOnline(String usersOnline) {
+        view.refreshUsersOnline(usersOnline);
+    }
+
+    @Override
+    public void setView(MVPChat.View view) {
+        this.view = view;
     }
 
     @Override
@@ -59,10 +79,5 @@ public class Presenter implements MVPChat.Presenter {
     @Override
     public void showMessage(String message) {
         view.showMessage(message);
-    }
-
-    @Override
-    public void clearCampo() {
-        view.clearCampo();
     }
 }

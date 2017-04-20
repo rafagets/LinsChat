@@ -3,6 +3,7 @@ package com.example.rafael.linschat.activity.chat;
 import com.example.rafael.linschat.domain.Menssagem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Jovem Soluções M.E.
@@ -12,33 +13,37 @@ import java.util.ArrayList;
 
 public interface MVPChat {
     interface Model {
-        void retrieveMenssagens(ArrayList<Menssagem> menssagems);
         void postMenssagem(Menssagem menssagem);
+        void retrieveMenssagens(ArrayList<Menssagem> menssagems);
+
+        void imOnline(Boolean status);
+        void retrieveUsersOnline();
     }
 
     interface Presenter {
-        void retrieveMenssagens();
         ArrayList<Menssagem> getMenssagens();
         void postMenssagem(String menssagem);
-        void setView(MVPChat.View view);
+        void retrieveMenssagens();
         void refreshMenssagens();
-
-        void setDialog(String message);
-
-        void closeDialog();
-
-        void showMessage(String message);
         void clearCampo();
+
+        void imOnline(Boolean status);
+        void retrieveUsersOnline();
+        void refreshUsersOnline(String usersOnline);
+
+        void setView(MVPChat.View view);
+        void setDialog(String message);
+        void closeDialog();
+        void showMessage(String message);
     }
 
     interface View {
         void refreshMenssagens();
         void clearCampo();
+        void refreshUsersOnline(String usersOnline);
 
         void setDialog(String message);
-
         void closeDialog();
-
         void showMessage(String message);
     }
 }

@@ -1,8 +1,8 @@
 package com.example.rafael.linschat.activity.cadastrar;
 
 import com.example.rafael.linschat.domain.Usuario;
-import com.example.rafael.linschat.domain.domainDAO.Controle;
-import com.example.rafael.linschat.domain.domainDAO.UsuarioDAO;
+import com.example.rafael.linschat.DAO.Controle;
+import com.example.rafael.linschat.DAO.UsuarioDAO;
 import com.example.rafael.linschat.util.CallFirebase;
 
 /**
